@@ -1,0 +1,7 @@
+download mongo-tools ->
+
+C:\Program Files\MongoDB\Tools\100\bin>  mongodump --out=C:\Users\come_\Desktop\bu\IdeaProjects\testSpringMongoGeneric\mongo_database_bu\data
+C:\Program Files\MongoDB\Tools\100\bin> mongorestore C:\Users\come_\Desktop\bu\IdeaProjects\testSpringMongoGeneric\mongo_database_bu\data
+
+
+or set path in envirronement variable

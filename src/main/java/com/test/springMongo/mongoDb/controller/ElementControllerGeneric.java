@@ -24,22 +24,7 @@ public class ElementControllerGeneric {
     @Autowired
     SequenceGeneratorService sequenceGeneratorService;
 
-    /***
-     *
-     * @param element
-     * @param field
-     * @param value
-     * @param filter
-     * @return
-     * @throws ClassNotFoundException
-     * les filtres peuvent etre unique ou composés avec un separateur ';' exemple age lt 50 AND gt 20 => age/20;50/lt;gt
-     */
-    @GetMapping("/{element}/{field}/{value}/{filter}")
-    public Object getAllElements(@PathVariable(value = "element") String element, @PathVariable(value = "field") String field,
-                                 @PathVariable(value = "value") String value, @PathVariable(value = "filter") String filter) throws ClassNotFoundException {
-        //curl -X GET localhost:8090/api/vi/elements/WorkOrder
-        return ResponseEntity.ok(elementService.getElementBy(this.getClassForName(element),field,value,filter));
-    }
+
 
     @GetMapping("/{element}")
     public Object getAllElements(@PathVariable(value = "element") String element) throws ClassNotFoundException {

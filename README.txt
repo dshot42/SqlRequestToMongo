@@ -1,5 +1,12 @@
 convert classical SQL request as String to Mongo criteria Request
 
+execute mongo restore :
+mongorestore
+
+download mongo-tools ->
+then : > cd C:\Program Files\MongoDB\Tools\100\bin
+ > mongorestore C:\Users\come_\Desktop\bu\IdeaProjects\testSpringMongoGeneric\mongo_database_bu\data
+
 
 Complexity : 
 simple request : Select * from where … (AND / OR / = / != / < / >)

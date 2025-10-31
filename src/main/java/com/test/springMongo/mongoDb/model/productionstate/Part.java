@@ -1,5 +1,6 @@
 package com.test.springMongo.mongoDb.model.productionstate;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.test.springMongo.mongoDb.model.ElementEntity;
 import com.test.springMongo.mongoDb.model.sensors.SensorValue;
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -16,9 +18,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-//@Indices({ @Index(value = "partId", type = IndexType.NonUnique), @Index(value = "state", type = IndexType.NonUnique),
-//		@Index(value = "associatedWorkorder", type = IndexType.NonUnique),
-//		@Index(value = "lastModified", type = IndexType.NonUnique) })
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @Document("Part")
 public class Part extends ElementEntity implements Serializable {
 
@@ -55,9 +56,6 @@ public class Part extends ElementEntity implements Serializable {
         return state;
     }
 
-    // @JsonSchema(title = "Associated Workorder", metadata = @JSData(key = "order", value = "50"))
-    @JsonProperty
-    protected Workorder associatedWorkorder;
 
     /**
      * part ID, customer id, to know the current part
@@ -158,13 +156,6 @@ public class Part extends ElementEntity implements Serializable {
         this.state = state;
     }
 
-    public Workorder getAssociatedWorkorder() {
-        return associatedWorkorder;
-    }
-
-    public void setAssociatedWorkorder(Workorder associatedWorkorder) {
-        this.associatedWorkorder = associatedWorkorder;
-    }
 
     public String getPartId() {
         return partId;
@@ -246,13 +237,6 @@ public class Part extends ElementEntity implements Serializable {
         this.associatedSensorValues = associatedSensorValues;
     }
 
-//	public List<AbstractMachineDefect> getPendingAssociatedMachineDefects() {
-//		return pendingAssociatedMachineDefects;
-//	}
-//
-//	public void setPendingAssociatedMachineDefects(List<AbstractMachineDefect> pendingAssociatedMachineDefects) {
-//		this.pendingAssociatedMachineDefects = pendingAssociatedMachineDefects;
-//	}
 
     public HashMap<String, Object> getUserAdditionalInformations() {
         return userAdditionalInformations;
